@@ -1,0 +1,260 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="620" viewBox="0 0 960 620" role="img" aria-labelledby="title desc">
+<title id="title">Niri-style snapping GitHub profile</title>
+<desc id="desc">A NixOS-inspired profile that snaps between terminal windows to the right like niri's horizontal scrollable tiling layout.</desc>
+
+<style>
+:root{
+  --desktop:#090d12;--bg:#0d1117;--panel:#10161d;--fg:#e6edf3;--muted:#8b949e;
+  --border:#30363d;--nix1:#7ebae4;--nix2:#5277c3;--green:#7ee787
+}
+.desktop{fill:var(--desktop)}
+.window{fill:var(--bg);stroke:var(--border);stroke-width:1.5}
+.focus{fill:none;stroke:var(--nix2);stroke-width:1.4}
+.text{font-family:"DejaVu Sans Mono","Liberation Mono",Consolas,monospace;fill:var(--fg)}
+.muted{fill:var(--muted)}.n1{fill:var(--nix1)}.n2{fill:var(--nix2)}.green{fill:var(--green)}
+.small{font-size:12px}.med{font-size:14px}.big{font-size:17px}.titletext{font-size:20px;font-weight:700}
+.dot{fill:#484f58}
+.status{animation:statusPulse 1.8s ease-in-out infinite}
+.cursor{animation:blink 1s steps(2,start) infinite}
+.rule{stroke:var(--border);stroke-width:1}
+.card{fill:var(--panel);stroke:var(--border);stroke-width:1}
+.node{fill:var(--bg);stroke:var(--nix1);stroke-width:2}.nodecore{fill:var(--nix1)}
+.hash{font-size:11px;fill:var(--nix2)}.projectName{font-size:15px;font-weight:700}.projectDesc{font-size:12px;fill:var(--muted)}
+.globe{fill:none;stroke:var(--nix2);stroke-width:1.3}.globe2{fill:none;stroke:var(--nix1);stroke-width:1.1;opacity:.8}
+.float{animation:float 4s ease-in-out infinite}.meridian{transform-origin:300px 310px}
+.m1{animation:mer1 5s ease-in-out infinite}.m2{animation:mer2 5s ease-in-out infinite reverse}
+.marker{fill:var(--nix1);filter:drop-shadow(0 0 4px rgba(126,186,228,.5))}
+.link{stroke:var(--nix2);stroke-width:1.4;fill:none}
+.shadow{filter:drop-shadow(0 14px 22px rgba(0,0,0,.35))}
+.hint{opacity:.68}
+.track{
+  will-change:transform;
+  animation:niriSnap 20s infinite;
+}
+
+/*
+  Niri-like behavior:
+  - long hold on the focused column
+  - very quick eased viewport movement to the next column
+  - no constant conveyor-belt motion
+  4 windows × 5 seconds, ~0.42 s transition each.
+*/
+@keyframes niriSnap{
+   0%, 21.5% { transform:translateX(0); }
+  23.5%, 46.5% { transform:translateX(-860px); }
+  48.5%, 71.5% { transform:translateX(-1720px); }
+  73.5%, 96.5% { transform:translateX(-2580px); }
+  98.5%,100% { transform:translateX(-3440px); }
+}
+@keyframes statusPulse{0%,100%{opacity:.55}50%{opacity:1}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes mer1{0%,100%{transform:scaleX(.34)}50%{transform:scaleX(.92)}}
+@keyframes mer2{0%,100%{transform:scaleX(.85)}50%{transform:scaleX(.28)}}
+@media(prefers-reduced-motion:reduce){
+  .track,.float,.m1,.m2,.status,.cursor{animation:none!important}
+}
+</style>
+
+<defs>
+  <clipPath id="viewport"><rect width="960" height="620" rx="18"/></clipPath>
+</defs>
+
+<rect class="desktop" width="960" height="620" rx="18"/>
+<text x="24" y="600" class="text muted small hint">i &lt;3 niri</text>
+<text x="787" y="600" class="text muted small hint">Mod+Right  →</text>
+
+<g clip-path="url(#viewport)">
+<g class="track">
+
+<!-- ================= PROFILE ================= -->
+<g transform="translate(70,48)" class="shadow">
+  <rect class="window" width="820" height="520" rx="16"/>
+  <rect class="focus" x="1" y="1" width="818" height="518" rx="15"/>
+  <circle class="dot" cx="28" cy="27" r="6"/><circle class="dot" cx="49" cy="27" r="6"/><circle class="dot" cx="70" cy="27" r="6"/>
+  <text x="105" y="33" class="text muted med">vlad@nixos:~ — fastfetch</text>
+  <circle cx="779" cy="27" r="4" fill="var(--green)" class="status"/>
+  <text x="697" y="32" class="text muted small">ONLINE</text>
+  <line x1="20" y1="51" x2="800" y2="51" class="rule"/>
+  <text x="30" y="82" class="text med">❯ fastfetch</text>
+  <rect x="132" y="68" width="8" height="17" rx="1" fill="var(--fg)" class="cursor"/>
+
+  <g transform="translate(40,125)">
+    <text class="text n1" font-size="15" font-weight="700" xml:space="preserve">
+      <tspan x="0" y="0">        __    </tspan><tspan class="n2">____    __</tspan>
+      <tspan x="0" y="20">       /  \   </tspan><tspan class="n2">\   \  /  \</tspan>
+      <tspan x="0" y="40">       \   \   </tspan><tspan class="n2">\   \/   /</tspan>
+      <tspan x="0" y="60">     ___\   \___</tspan><tspan class="n2">\      /</tspan>
+      <tspan x="0" y="80">    /            </tspan><tspan class="n2">\    /</tspan><tspan>   /\</tspan>
+      <tspan x="0" y="100">   /______________</tspan><tspan class="n2">\   \</tspan><tspan>  /  \</tspan>
+      <tspan x="0" y="120">        </tspan><tspan class="n2">/   /      \   \</tspan><tspan>/   /</tspan>
+      <tspan x="0" y="140" class="n2"> ______/   /        \  </tspan><tspan class="n1">/   /___</tspan>
+      <tspan x="0" y="160" class="n2">/         /          \</tspan><tspan class="n1">/        \</tspan>
+      <tspan x="0" y="180" class="n2">\____    /</tspan><tspan class="n1">\          /   ______/</tspan>
+      <tspan x="0" y="200" class="n2">    /   /</tspan><tspan class="n1">  \        /   /</tspan>
+      <tspan x="0" y="220" class="n2">   /   /</tspan><tspan class="n1">\   \</tspan><tspan class="n2">______</tspan><tspan class="n1">/</tspan><tspan class="n2">___</tspan><tspan class="n1">/</tspan><tspan class="n2">_____</tspan>
+      <tspan x="0" y="240" class="n2">   \  /</tspan><tspan class="n1">  \   \</tspan><tspan class="n2">              /</tspan>
+      <tspan x="0" y="260" class="n2">    \/</tspan><tspan class="n1">   /    \</tspan><tspan class="n2">____    ____/</tspan>
+      <tspan x="0" y="280" class="n1">         /      \</tspan><tspan class="n2">   \   \</tspan>
+      <tspan x="0" y="300" class="n1">        /   /\   \</tspan><tspan class="n2">   \   \</tspan>
+      <tspan x="0" y="320" class="n1">        \__/  \___\</tspan><tspan class="n2">   \__/</tspan>
+    </text>
+  </g>
+  <g transform="translate(420,145)">
+    <text class="text titletext" x="0" y="0">vlad@nixos</text>
+    <text class="text muted med" x="0" y="25">-------------------------</text>
+    <text class="text med" x="0" y="55"><tspan class="n1">OS:</tspan> NixOS</text>
+    <text class="text med" x="0" y="82"><tspan class="n1">Role:</tspan> Software Engineering</text>
+    <text class="text med" x="0" y="109"><tspan class="n1">Focus:</tspan> Full Stack / DevOps</text>
+    <text class="text med" x="0" y="136"><tspan class="n1">Languages:</tspan> TS, Python, Rust, C</text>
+    <text class="text med" x="0" y="163"><tspan class="n1">Tools:</tspan> Docker, Nix, Git</text>
+    <text class="text med" x="0" y="190"><tspan class="n1">WM:</tspan> niri</text>
+    <text class="text med" x="0" y="217"><tspan class="n1">Editor:</tspan> Neovim</text>
+    <text class="text med" x="0" y="244"><tspan class="n1">Learning:</tspan> Reverse Engineering</text>
+    <text class="text med" x="73" y="267">Low-Level Programming</text>
+  </g>
+</g>
+
+<!-- ================= PROJECTS ================= -->
+<g transform="translate(930,48)" class="shadow">
+  <rect class="window" width="820" height="520" rx="16"/>
+  <rect class="focus" x="1" y="1" width="818" height="518" rx="15"/>
+  <circle class="dot" cx="28" cy="27" r="6"/><circle class="dot" cx="49" cy="27" r="6"/><circle class="dot" cx="70" cy="27" r="6"/>
+  <text x="105" y="33" class="text muted med">vlad@nixos:~/Projects — git</text>
+  <circle cx="779" cy="27" r="4" fill="var(--green)" class="status"/>
+  <text x="697" y="32" class="text muted small">ONLINE</text>
+  <line x1="20" y1="51" x2="800" y2="51" class="rule"/>
+  <text x="30" y="82" class="text med">❯ git log --featured --stat</text>
+  <line x1="70" y1="118" x2="70" y2="470" stroke="var(--nix2)" stroke-width="1.4"/>
+
+  <g><circle cx="70" cy="140" r="7" class="node"/><circle cx="70" cy="140" r="2.5" class="nodecore"/><rect x="98" y="116" width="690" height="48" rx="7" class="card"/><text x="114" y="136" class="text hash">8a3e19f</text><text x="190" y="136" class="text projectName">Optify</text><text x="190" y="153" class="text projectDesc">high-performance native Spotify client</text></g>
+  <g><circle cx="70" cy="202" r="7" class="node"/><circle cx="70" cy="202" r="2.5" class="nodecore"/><rect x="98" y="178" width="690" height="48" rx="7" class="card"/><text x="114" y="198" class="text hash">21df84a</text><text x="190" y="198" class="text projectName">CLInical</text><text x="190" y="215" class="text projectDesc">privacy-preserving clinical assistant</text></g>
+  <g><circle cx="70" cy="264" r="7" class="node"/><circle cx="70" cy="264" r="2.5" class="nodecore"/><rect x="98" y="240" width="690" height="48" rx="7" class="card"/><text x="114" y="260" class="text hash">47da913</text><text x="190" y="260" class="text projectName">Omnibase</text><text x="190" y="277" class="text projectDesc">full-stack platform project</text></g>
+  <g><circle cx="70" cy="326" r="7" class="node"/><circle cx="70" cy="326" r="2.5" class="nodecore"/><rect x="98" y="302" width="690" height="48" rx="7" class="card"/><text x="114" y="322" class="text hash">f92a781</text><text x="190" y="322" class="text projectName">Lifepatch</text><text x="190" y="339" class="text projectDesc">Next.js application with dynamic UI</text></g>
+  <g><circle cx="70" cy="388" r="7" class="node"/><circle cx="70" cy="388" r="2.5" class="nodecore"/><rect x="98" y="364" width="690" height="48" rx="7" class="card"/><text x="114" y="384" class="text hash">b18c4d2</text><text x="190" y="384" class="text projectName">SoundCloud Listen Along</text><text x="190" y="401" class="text projectDesc">synchronized SoundCloud listening rooms</text></g>
+  <g><circle cx="70" cy="450" r="7" class="node"/><circle cx="70" cy="450" r="2.5" class="nodecore"/><rect x="98" y="426" width="690" height="48" rx="7" class="card"/><text x="114" y="446" class="text hash">c62af90</text><text x="190" y="446" class="text projectName">Cloudflare Server Spawner</text><text x="190" y="463" class="text projectDesc">Cloudflare-based server spawning system</text></g>
+</g>
+
+<!-- ================= LOCATION ================= -->
+<g transform="translate(1790,48)" class="shadow">
+  <rect class="window" width="820" height="520" rx="16"/>
+  <rect class="focus" x="1" y="1" width="818" height="518" rx="15"/>
+  <circle class="dot" cx="28" cy="27" r="6"/><circle class="dot" cx="49" cy="27" r="6"/><circle class="dot" cx="70" cy="27" r="6"/>
+  <text x="105" y="33" class="text muted med">vlad@nixos:~ — locate</text>
+  <circle cx="779" cy="27" r="4" fill="var(--green)" class="status"/>
+  <text x="697" y="32" class="text muted small">ONLINE</text>
+  <line x1="20" y1="51" x2="800" y2="51" class="rule"/>
+  <text x="30" y="82" class="text med">❯ locate --country</text>
+
+  <g class="float">
+    <circle cx="300" cy="310" r="135" class="globe"/>
+    <ellipse cx="300" cy="310" rx="135" ry="48" class="globe2"/>
+    <ellipse cx="300" cy="310" rx="135" ry="90" class="globe"/>
+    <line x1="165" y1="310" x2="435" y2="310" class="globe2"/>
+    <ellipse cx="300" cy="310" rx="48" ry="135" class="globe2 meridian m1"/>
+    <ellipse cx="300" cy="310" rx="86" ry="135" class="globe meridian m2"/>
+    <ellipse cx="300" cy="310" rx="112" ry="135" class="globe2 meridian m1"/>
+  </g>
+
+  <circle cx="338" cy="250" r="5" class="marker"/>
+  <path d="M338 250 L500 202 L590 202" class="link"/>
+  <g transform="translate(610,188)">
+    <text x="0" y="0" class="text titletext">LOCATION</text>
+    <text x="0" y="34" class="text med"><tspan class="n1">Country:</tspan> Denmark</text>
+    <text x="0" y="64" class="text med"><tspan class="n1">Region:</tspan> Europe</text>
+    <text x="0" y="94" class="text med"><tspan class="n1">Precision:</tspan> Country</text>
+    <text x="0" y="124" class="text med"><tspan class="n1">Status:</tspan> <tspan class="green">Online</tspan></text>
+  </g>
+  <text x="30" y="492" class="text muted small">[ geolocation resolved ]</text>
+  <text x="685" y="492" class="text muted small">DK · EUROPE</text>
+</g>
+
+<!-- ================= CONTACT ================= -->
+<g transform="translate(2650,48)" class="shadow">
+  <rect class="window" width="820" height="520" rx="16"/>
+  <rect class="focus" x="1" y="1" width="818" height="518" rx="15"/>
+  <circle class="dot" cx="28" cy="27" r="6"/><circle class="dot" cx="49" cy="27" r="6"/><circle class="dot" cx="70" cy="27" r="6"/>
+  <text x="105" y="33" class="text muted med">vlad@nixos:~ — contact</text>
+  <circle cx="779" cy="27" r="4" fill="var(--green)" class="status"/>
+  <text x="697" y="32" class="text muted small">ONLINE</text>
+  <line x1="20" y1="51" x2="800" y2="51" class="rule"/>
+  <text x="30" y="82" class="text med">
+    <tspan class="n1">vlad@nixos</tspan><tspan class="muted">:</tspan><tspan class="n2">~</tspan><tspan class="muted">$</tspan>
+    <tspan> cat ~/.contact</tspan>
+  </text>
+
+  <g transform="translate(58,132)">
+    <text x="0" y="0" class="text muted small"># ~/.contact</text>
+
+    <text x="0" y="52" class="text med n2">github</text>
+    <text x="105" y="52" class="text med muted">=</text>
+    <text x="132" y="52" class="text med n1">github.com/vladi245</text>
+
+    <text x="0" y="96" class="text med n2">linkedin</text>
+    <text x="105" y="96" class="text med muted">=</text>
+    <text x="132" y="96" class="text med n1">www.linkedin.com/in/vlad-i-600752286</text>
+
+    <text x="0" y="140" class="text med n2">website</text>
+    <text x="105" y="140" class="text med muted">=</text>
+    <text x="132" y="140" class="text med n1">vladi245.github.io</text>
+
+    <text x="0" y="208" class="text muted small"># public links loaded successfully</text>
+
+    <text x="0" y="278" class="text med">
+      <tspan class="n1">vlad@nixos</tspan><tspan class="muted">:</tspan><tspan class="n2">~</tspan><tspan class="muted">$</tspan>
+    </text>
+    <rect x="121" y="264" width="8" height="18" rx="1" fill="var(--fg)" class="cursor"/>
+  </g>
+</g>
+
+<!-- Exact duplicate of PROFILE for a visually lossless loop seam -->
+<g transform="translate(3510,48)" class="shadow">
+  <rect class="window" width="820" height="520" rx="16"/>
+  <rect class="focus" x="1" y="1" width="818" height="518" rx="15"/>
+  <circle class="dot" cx="28" cy="27" r="6"/><circle class="dot" cx="49" cy="27" r="6"/><circle class="dot" cx="70" cy="27" r="6"/>
+  <text x="105" y="33" class="text muted med">vlad@nixos:~ — fastfetch</text>
+  <circle cx="779" cy="27" r="4" fill="var(--green)" class="status"/>
+  <text x="697" y="32" class="text muted small">ONLINE</text>
+  <line x1="20" y1="51" x2="800" y2="51" class="rule"/>
+  <text x="30" y="82" class="text med">❯ fastfetch</text>
+  <rect x="132" y="68" width="8" height="17" rx="1" fill="var(--fg)" class="cursor"/>
+
+  <g transform="translate(40,125)">
+    <text class="text n1" font-size="15" font-weight="700" xml:space="preserve">
+      <tspan x="0" y="0">        __    </tspan><tspan class="n2">____    __</tspan>
+      <tspan x="0" y="20">       /  \   </tspan><tspan class="n2">\   \  /  \</tspan>
+      <tspan x="0" y="40">       \   \   </tspan><tspan class="n2">\   \/   /</tspan>
+      <tspan x="0" y="60">     ___\   \___</tspan><tspan class="n2">\      /</tspan>
+      <tspan x="0" y="80">    /            </tspan><tspan class="n2">\    /</tspan><tspan>   /\</tspan>
+      <tspan x="0" y="100">   /______________</tspan><tspan class="n2">\   \</tspan><tspan>  /  \</tspan>
+      <tspan x="0" y="120">        </tspan><tspan class="n2">/   /      \   \</tspan><tspan>/   /</tspan>
+      <tspan x="0" y="140" class="n2"> ______/   /        \  </tspan><tspan class="n1">/   /___</tspan>
+      <tspan x="0" y="160" class="n2">/         /          \</tspan><tspan class="n1">/        \</tspan>
+      <tspan x="0" y="180" class="n2">\____    /</tspan><tspan class="n1">\          /   ______/</tspan>
+      <tspan x="0" y="200" class="n2">    /   /</tspan><tspan class="n1">  \        /   /</tspan>
+      <tspan x="0" y="220" class="n2">   /   /</tspan><tspan class="n1">\   \</tspan><tspan class="n2">______</tspan><tspan class="n1">/</tspan><tspan class="n2">___</tspan><tspan class="n1">/</tspan><tspan class="n2">_____</tspan>
+      <tspan x="0" y="240" class="n2">   \  /</tspan><tspan class="n1">  \   \</tspan><tspan class="n2">              /</tspan>
+      <tspan x="0" y="260" class="n2">    \/</tspan><tspan class="n1">   /    \</tspan><tspan class="n2">____    ____/</tspan>
+      <tspan x="0" y="280" class="n1">         /      \</tspan><tspan class="n2">   \   \</tspan>
+      <tspan x="0" y="300" class="n1">        /   /\   \</tspan><tspan class="n2">   \   \</tspan>
+      <tspan x="0" y="320" class="n1">        \__/  \___\</tspan><tspan class="n2">   \__/</tspan>
+    </text>
+  </g>
+  <g transform="translate(420,145)">
+    <text class="text titletext" x="0" y="0">vlad@nixos</text>
+    <text class="text muted med" x="0" y="25">-------------------------</text>
+    <text class="text med" x="0" y="55"><tspan class="n1">OS:</tspan> NixOS</text>
+    <text class="text med" x="0" y="82"><tspan class="n1">Role:</tspan> Software Engineering</text>
+    <text class="text med" x="0" y="109"><tspan class="n1">Focus:</tspan> Full Stack / DevOps</text>
+    <text class="text med" x="0" y="136"><tspan class="n1">Languages:</tspan> TS, Python, Rust, C</text>
+    <text class="text med" x="0" y="163"><tspan class="n1">Tools:</tspan> Docker, Nix, Git</text>
+    <text class="text med" x="0" y="190"><tspan class="n1">WM:</tspan> niri</text>
+    <text class="text med" x="0" y="217"><tspan class="n1">Editor:</tspan> Neovim</text>
+    <text class="text med" x="0" y="244"><tspan class="n1">Learning:</tspan> Reverse Engineering</text>
+    <text class="text med" x="73" y="267">Low-Level Programming</text>
+  </g>
+</g>
+
+</g>
+</g>
+</svg>
